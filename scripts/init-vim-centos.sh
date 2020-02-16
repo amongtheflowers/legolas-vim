@@ -10,18 +10,4 @@ yum install -y gcc gcc-c++ kernel-devel cmake golang python-pip python-devel pyt
 
 sudo ln -s /usr/bin/python3.6 /usr/bin/python3
 
-sudo yum -y remove vim
-
-cd ~ && rm -rf vim && git clone https://github.com/vim/vim.git && cd vim && git checkout v8.2.0114
-./configure --with-features=huge \
-    --enable-multibyte \
-    --enable-rubyinterp=yes \
-    --enable-pythoninterp=yes \
-    --enable-python3interp=yes \
-    --enable-perlinterp=yes \
-    --enable-luainterp=yes \
-    --enable-gui=gtk2 \
-    --enable-cscope \
-    --prefix=/usr/local
-make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
-sudo make install
+yum remove vim-* -y \ && wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/lbiaggi/vim80-ligatures/repo/epel-7/lbiaggi-vim80-ligatures-epel-7.repo \ && yum install vim-enhanced sudo -y
